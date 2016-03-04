@@ -26,11 +26,5 @@ install:
   - go vet ./...
   - go get -t -v ./
 
-#script:
-#  - ./scripts/run-test
-#
-#after_success:
-#  - ./scripts/pkg-upload
-#
-#notifications:
+notifications:
   email: 436082310@qq.com
