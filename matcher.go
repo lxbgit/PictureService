@@ -4,7 +4,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/appwilldev/PictureService/models"
+	"github.com/PictureService/models"
 )
 
 var (

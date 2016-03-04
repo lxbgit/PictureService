@@ -10,9 +10,9 @@ import (
 
 	"qiniupkg.com/api.v7/kodo"
 
-	"github.com/appwilldev/PictureService/conf"
-	"github.com/appwilldev/PictureService/logger"
-	"github.com/appwilldev/PictureService/utils"
+	"github.com/PictureService/conf"
+	"github.com/PictureService/logger"
+	"github.com/PictureService/utils"
 	"github.com/gin-gonic/gin"
 )
 

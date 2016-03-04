@@ -6,7 +6,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"github.com/appwilldev/PictureService/conf"
+	"github.com/PictureService/conf"
 	"github.com/go-xorm/xorm"
 	_ "github.com/lib/pq"
 	_ "github.com/mattn/go-sqlite3"
@@ -33,8 +33,7 @@ func init() {
 	}
 	dbEngineDefault.SetMaxOpenConns(100)
 	dbEngineDefault.SetMaxIdleConns(50)
-	dbEngineDefault.ShowErr = true
-	dbEngineDefault.ShowSQL = conf.DebugMode
+	dbEngineDefault.ShowSQL(conf.DebugMode)
 
 	if err = dbEngineDefault.Sync2(
 		&User{}, &App{},
