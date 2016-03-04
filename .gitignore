@@ -13,7 +13,7 @@ _obj
 _test
 Godeps/_workspace/
 .idea
-
+vendor
 # Architecture specific extensions/prefixes
 *.[568vq]
 [568vq].out

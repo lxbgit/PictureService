@@ -1,0 +1,141 @@
+{
+	"ImportPath": "github.com/appwilldev/PictureService",
+	"GoVersion": "go1.6",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.9.0-15-g219c8cb",
+			"Rev": "219c8cb75c258c552e999735be6df753ffc7afdc"
+		},
+		{
+			"ImportPath": "github.com/dgrijalva/jwt-go",
+			"Comment": "v2.4.0-11-gf219341",
+			"Rev": "f2193411bd642f7db03249fd79d5292c9b34916a"
+		},
+		{
+			"ImportPath": "github.com/facebookgo/clock",
+			"Rev": "600d898af40aa09a7a93ecb9265d87b0504b6f03"
+		},
+		{
+			"ImportPath": "github.com/facebookgo/grace/gracehttp",
+			"Rev": "053ab5d25436faedf3fe76fbf3da797c8c27c659"
+		},
+		{
+			"ImportPath": "github.com/facebookgo/grace/gracenet",
+			"Rev": "053ab5d25436faedf3fe76fbf3da797c8c27c659"
+		},
+		{
+			"ImportPath": "github.com/facebookgo/httpdown",
+			"Rev": "1fa03998d20119dfe4ef73f56a638d83048052e2"
+		},
+		{
+			"ImportPath": "github.com/facebookgo/stats",
+			"Rev": "1b76add642e42c6ffba7211ad7b3939ce654526e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-219-g3d002e3",
+			"Rev": "3d002e382355cafc15d706b92899b1961d5b79e9"
+		},
+		{
+			"ImportPath": "github.com/go-xorm/core",
+			"Comment": "v0.5.1-1-g5021584",
+			"Rev": "502158401cde814951eae62f064d9e5ff39e13ce"
+		},
+		{
+			"ImportPath": "github.com/go-xorm/xorm",
+			"Comment": "v0.5.0-5-g4fec116",
+			"Rev": "4fec1167dee4d169811e9437d6563c76ac1446bf"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "c75fbf01dc6cb73649c4cd4326182c3e44aa9dbb"
+		},
+		{
+			"ImportPath": "github.com/gorilla/feeds",
+			"Rev": "a6a27121d834d083d564b296561881acea23fbdd"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-82-ge182dc4",
+			"Rev": "e182dc4027e2ded4b19396d638610f2653295f36"
+		},
+		{
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Comment": "v1.1.0-30-g5510da3",
+			"Rev": "5510da399572b4962c020184bb291120c0a412e2"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "47990a1ba55743e6ef1affd3a14e5bac8553615d"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "442cd600860ce722f6615730eb008a37a87b13ee"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.17.1",
+			"Rev": "014792cf3e266caff1e916876be12282b33059e0"
+		},
+		{
+			"ImportPath": "qiniupkg.com/api.v7/auth/qbox",
+			"Comment": "v7.0.4-2-gf7911df",
+			"Rev": "f7911dfbca7aee46f4e405f1756071ded45473ea"
+		},
+		{
+			"ImportPath": "qiniupkg.com/api.v7/conf",
+			"Comment": "v7.0.4-2-gf7911df",
+			"Rev": "f7911dfbca7aee46f4e405f1756071ded45473ea"
+		},
+		{
+			"ImportPath": "qiniupkg.com/api.v7/kodo",
+			"Comment": "v7.0.4-2-gf7911df",
+			"Rev": "f7911dfbca7aee46f4e405f1756071ded45473ea"
+		},
+		{
+			"ImportPath": "qiniupkg.com/api.v7/kodocli",
+			"Comment": "v7.0.4-2-gf7911df",
+			"Rev": "f7911dfbca7aee46f4e405f1756071ded45473ea"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/bytes.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/ctype.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/log.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/reqid.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/rpc.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/url.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		},
+		{
+			"ImportPath": "qiniupkg.com/x/xlog.v7",
+			"Comment": "v7.0.8",
+			"Rev": "946c4a16076d6d98aeb78619e2bd4012357f7228"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+language: go
+
+os:
+  - linux
+  - osx
+
+go:
+  - 1.6
+  #- tip
+
+branches:
+  only:
+    - master
+    - /^release-.+$/
+
+before_install:
+  - if [ `uname` = "Linux" ]; then
+      sudo apt-get install bc curl -y;
+    elif [ `uname` = "Darwin" ]; then
+      brew install curl;
+    fi
+
+install:
+  - ./scripts/godep-update
+  - go generate ./...
+  - go vet ./...
+  - go get -t -v ./
+
+#script:
+#  - ./scripts/run-test
+#
+#after_success:
+#  - ./scripts/pkg-upload
+#
+#notifications:
+  email: 436082310@qq.com
