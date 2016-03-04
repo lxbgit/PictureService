@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/PictureService/conf"
-	"github.com/PictureService/models"
-	"github.com/PictureService/utils"
+	"github.com/lxbgit/PictureService/conf"
+	"github.com/lxbgit/PictureService/models"
+	"github.com/lxbgit/PictureService/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )

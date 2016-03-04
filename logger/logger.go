@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/PictureService/conf"
-	"github.com/PictureService/utils"
+	"github.com/lxbgit/PictureService/conf"
+	"github.com/lxbgit/PictureService/utils"
 )
 
 var (

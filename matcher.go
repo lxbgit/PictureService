@@ -4,7 +4,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/PictureService/models"
+	"github.com/lxbgit/PictureService/models"
 )
 
 var (

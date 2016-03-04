@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/PictureService/conf"
+	"github.com/lxbgit/PictureService/conf"
 	"github.com/facebookgo/grace/gracehttp"
 	"github.com/gin-gonic/gin"
 	"qiniupkg.com/x/log.v7"

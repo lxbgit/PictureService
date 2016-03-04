@@ -1,9 +1,6 @@
 {
-	"ImportPath": "github.com/appwilldev/PictureService",
+	"ImportPath": "github.com/lxbgit/PictureService",
 	"GoVersion": "go1.6",
-	"Packages": [
-		"./..."
-	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
@@ -14,10 +11,6 @@
 			"ImportPath": "github.com/dgrijalva/jwt-go",
 			"Comment": "v2.4.0-11-gf219341",
 			"Rev": "f2193411bd642f7db03249fd79d5292c9b34916a"
-		},
-		{
-			"ImportPath": "github.com/dustin/go-broadcast",
-			"Rev": "3bdf6d4a7164a50bc19d5f230e2981d87d2584f1"
 		},
 		{
 			"ImportPath": "github.com/facebookgo/clock",
@@ -45,11 +38,6 @@
 			"Rev": "3d002e382355cafc15d706b92899b1961d5b79e9"
 		},
 		{
-			"ImportPath": "github.com/go-sql-driver/mysql",
-			"Comment": "v1.2-184-g1fca743",
-			"Rev": "1fca743146605a172a266e1654e01e5cd5669bee"
-		},
-		{
 			"ImportPath": "github.com/go-xorm/core",
 			"Comment": "v0.5.1-1-g5021584",
 			"Rev": "502158401cde814951eae62f064d9e5ff39e13ce"
@@ -61,10 +49,6 @@
 		},
 		{
 			"ImportPath": "github.com/golang/protobuf/proto",
-			"Rev": "c75fbf01dc6cb73649c4cd4326182c3e44aa9dbb"
-		},
-		{
-			"ImportPath": "github.com/golang/protobuf/ptypes/any",
 			"Rev": "c75fbf01dc6cb73649c4cd4326182c3e44aa9dbb"
 		},
 		{
@@ -81,10 +65,6 @@
 			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
 		},
 		{
-			"ImportPath": "github.com/manucorporat/stats",
-			"Rev": "8f2d6ace262eba462e9beb552382c98be51d807b"
-		},
-		{
 			"ImportPath": "github.com/mattn/go-sqlite3",
 			"Comment": "v1.1.0-30-g5510da3",
 			"Rev": "5510da399572b4962c020184bb291120c0a412e2"
@@ -96,16 +76,6 @@
 		{
 			"ImportPath": "golang.org/x/sys/unix",
 			"Rev": "442cd600860ce722f6615730eb008a37a87b13ee"
-		},
-		{
-			"ImportPath": "gopkg.in/airbrake/gobrake.v2",
-			"Comment": "v2.0.3",
-			"Rev": "c9d51adc624b5cc4c1bf8de730a09af4878ffe2d"
-		},
-		{
-			"ImportPath": "gopkg.in/gemnasium/logrus-airbrake-hook.v2",
-			"Comment": "v2.0.0",
-			"Rev": "31e6fd4bd5a98d8ee7673d24bc54ec73c31810dd"
 		},
 		{
 			"ImportPath": "gopkg.in/go-playground/validator.v8",
