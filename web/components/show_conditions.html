@@ -1,0 +1,110 @@
+<table class="table table-bordered" style="margin-top:15px;table-layout: fixed;">
+    <thead>
+        <tr class="active">
+            <td style="text-align:center;width:150px">conditions</td>
+            <td style="text-align:center;width:100px;">value</td>
+            <td style="text-align:center;width:30px;">操作</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(idx,m) in data_condition">
+            <td form class="form-inline">
+                <cond :model="m.condition"></cond>
+                <button class="btn glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal2" v-on:click="show_condition_edit(idx,m)"></button>
+            </td>
+            <td style="text-align:center;">
+                <input type="text" v-model="m.value" v-bind:value="m.value">
+            </td>
+            <td style="vertical-align:middle;text-align:center;">
+                <button class="btn glyphicon glyphicon-remove" v-on:click="delete_config(idx)"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <button class="btn btn-default" style="float:right" v-on:click="save_condition">保存</button>
+    <button class="btn btn-default" style="float:right;margin-right:60px;" v-on:click="add_config">增加条件</button>
+</div>
+
+<div id="change_condition">
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">条件修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="padding-bottom:10px;border-bottom: 1px solid #e7eaed;">
+                        <table class="table" v-if="is_leaf_cond">
+                            <tr>
+                                <td>
+                                    <select class="form-control col-md-1" style="{{ cond_idx>cond_num-1？'color:red':'color:black' }}" v-model="condition_data.arguments[0].Symbol">
+                                        <option v-for="symbol in symbols" v-bind:value="symbol">{{symbol_titles[symbol]}}</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control col-md-1" style="{{ cond_idx>cond_num-1? 'color:red':'color:black' }}" v-model="condition_data.func">
+                                        <option v-for="func in symbol_funcs[condition_data.arguments[0].Symbol]" v-bind:value="func">{{leaf_func_titles[func]}}</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control col-md-2" style="{{ cond_idx>cond_num-1? 'color:red':'color:black' }}" v-model="condition_data.arguments[1]"
+                                    v-bind:value="condition_data.arguments[1]" />
+                                </td>
+                            </tr>
+                        </table>
+                        <div v-else>
+                            <div class="filter-group-relation">
+                                <div v-if="condition_data.func=='not'">
+                                    <button class="cond_btn" type="button">{{logic_funcs[condition_data.func]}}</button>
+                                </div>
+                                <div v-else>
+                                    <div v-if="condition_data.arguments.length>1">
+                                        <div class="relation-topline" style="height:{{height_for_func}}px;"></div>
+                                        <button class="cond_btn" type="button" v-on:click="change_func">{{logic_funcs[condition_data.func]}}</button>
+                                        <div class="relation-bottomline" style="height:{{height_for_func}}px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-contain">
+                                <div class="filter-item" v-for="(cond_idx, sub_cond) in condition_data.arguments">
+                                    <div class="selector property">
+                                        <select class="form-control col-md-1 btn-selector" style="{{ cond_idx>cond_num-1? 'color:red':'color:black' }}" v-model="sub_cond.arguments[0].Symbol">
+                                            <option v-for="symbol in symbols" v-bind:value="symbol">{{symbol_titles[symbol]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector func">
+                                        <select class="form-control col-md-1 btn-selector" style="{{ cond_idx>cond_num-1? 'color:red':'color:black' }}" v-model="sub_cond.func">
+                                            <option v-for="func in symbol_funcs[sub_cond.arguments[0].Symbol]" v-bind:value="func">{{leaf_func_titles[func]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="form-control col-md-2" style="{{ cond_idx>cond_num-1? 'color:red':'color:black' }}" v-model="sub_cond.arguments[1]"
+                                        v-bind:value="sub_cond.arguments[1]" onkeyon="value=value.replace(/{{symbol_focus[sub_cond.arguments[0].Symbol]}}/ig,'');"
+                                        />
+                                    </div>
+                                    <div class="flex-align-right">
+                                        <button type="button" class="btn-danger-small" v-on:click="del_sub_cond(condition_data.arguments.length,cond_idx)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin:10px 0 5px 0;padding:10px 0 5px 0;border-bottom: 1px solid #e7eaed;float:left">
+                        <a style="cursor:pointer;" v-on:click="add_sub_cond(condition_data.func)">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 增加条件
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" v-on:click="save_sub_condition(condition_data)">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

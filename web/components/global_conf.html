@@ -1,0 +1,15 @@
+<div><h4 style="text-align:center;padding-top:10px;">全局配置</h4></div>
+<div>
+    <div>
+        <a style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 增加Webhook
+        </a>
+    </div>
+    <table class="table table-responsive" style="margin-top:10px;">
+        <tbody>
+            <tr v-for="url in data.data.list">
+                <td style="text-align:center;">{{url}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

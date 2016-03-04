@@ -1,0 +1,23 @@
+{
+  "http_port": 8080,
+  "service_addr":"127.0.0.1:8080",
+  "sqlite_dir": "./",
+  "sqlite_filname": "picture.db",
+
+  "user_passcode_encrypt_key":"jiaonimamaxiwazihaobuhao",
+
+
+  "qiniu": {
+    "bucket": "videosns",
+    "pipeline": "videosns",
+    "domain": "7xl883.media1.z0.glb.clouddn.com",
+    "key": "o0p03FklQWXZ5n4uX85D9CAwUQadX_ZyRI0Tm-51",
+    "secret": "AsJhIWiIs6oNzqt9ZGqFQeCSCwblSJmxIltV9tYp"
+  },
+  "upyun": {
+    "bucket": "appwill123",
+    "domain": "appwill123.b0.upaiyun.com",
+    "secret": "UIBcg2fbd04iWLFxkeaj8TKpAhQ=",
+    "expiration":3600
+  }
+}

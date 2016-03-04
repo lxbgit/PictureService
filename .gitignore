@@ -1,0 +1,40 @@
+# Created by https://www.gitignore.io
+Instafig
+*.pid
+
+### Go ###
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+Godeps/_workspace/
+.idea
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.swp
+*.exe
+*.test
+*.prof
+*.iml
+*.pyc
+coverage.out
+.test.output
+*.db
+*.log
+.DS_Store
+PictureService

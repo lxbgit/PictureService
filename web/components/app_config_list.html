@@ -1,0 +1,159 @@
+<ol class="breadcrumb">
+    <li>
+        <a v-link="{path:'/apps/all/'+$route.query.from_apps_page}">应用</a>
+    </li>
+    <li class="active">{{app_name}}</li>
+</ol>
+
+<div>
+    <div>
+        <a style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal" v-on:click="show_add_page">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 增加配置
+        </a>
+    </div>
+    <table class="table table-responsive" style="margin-top:15px;table-layout: fixed;">
+        <thead>
+            <tr class="active">
+                <td style="text-align:center;width:150px">key</td>
+                <td style="text-align:center;width:30%;">value</td>
+                <td style="text-align:center;width:50px;">value类型</td>
+                <td style="text-align:center;width:30px;">状态</td>
+                <td style="text-align:center;width:100px;">最近更新</td>
+                <td style="text-align:center;width:80px;">操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(idx,config) in data.data">
+                <td style="vertical-align:middle;text-align:left;">
+                    {{config.k}}
+                    <br/>
+                    <span class="label label-default">{{config.des}}</span>
+                </td>
+                <td v-if="exit_condition[idx] == 0">
+                    <form class="form-inline" v-on:submit.prevent>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="active">
+                                    <td style="text-align:center">条件</td>
+                                    <td style="text-align:center">值</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="m in cond_data[idx]">
+                                    <td style="text-align:center">
+                                        <ifcond :model="m.condition"></ifcond>
+                                    </td>
+                                    <td style="text-align:center">{{m.value}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <button class="btn glyphicon glyphicon-edit" v-on:click="modify_config(idx)"></button>
+                    </form>
+                </td>
+                <td v-else>
+                    <form class="form-inline" v-on:submit.prevent>
+                        <input type="text" class="form-control" style="width:90%;" readonly="{{idx==index? false:true}}" v-on:blur="modify_value(idx)"
+                        v-bind:value="config.v" v-model="config.v">
+                        <button class="btn btn-default glyphicon glyphicon-edit" v-on:click="edit_value(idx)"></button>
+                    </form>
+                </td>
+                <td style="vertical-align:middle;text-align:center;">{{config.v_type}}</td>
+                <td style="vertical-align:middle;text-align:center;">
+                    <span v-if="config.status==1" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                    <span v-else class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                </td>
+                <td style="vertical-align:middle;text-align:center;">{{{config.last_update_info.created_utc | datetime}}}</td>
+                <td style="vertical-align:middle;text-align:center;">
+                    <a style="cursor:pointer;font-size:15px;" data-toggle="modal" data-target="#myModal1" v-on:click="modify_condition(idx)">修改</a>
+                    <a style="cursor:pointer;font-size:15px;" v-on:click="modify_history">修改历史</a>
+                </td>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">增加配置</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" v-bind:class="{ 'has-error':key_error}">
+                    <label class="control-label">key</label>
+                    <div>
+                        <input type="text" class="form-control" v-model="conf_key">
+                        <span class="alert-danger">{{key_error}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">value</label>
+                    <div>
+                        <input type="text" class="form-control" v-model="conf_value">
+                    </div>
+                </div>
+                <div class="form-group" v-bind:class="{ 'has-error':value_type_error}">
+                    <label class="control-label">value类型</label>
+                    <div>
+                        <select class="form-control" v-model="conf_value_type">
+                            <option value="string">string</option>
+                            <option value="int">int</option>
+                            <option value="float">float</option>
+                            <option value="code">code</option>
+                            <option value="template">template</option>
+                        </select>
+                    </div>
+                    <span class="alert-danger">{{value_type_error}}</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">注释</label>
+                    <div>
+                        <input type="text" class="form-control" v-model="conf_des">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" v-on:click="add_config">增加</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改配置</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">key</label>
+                    <div>
+                        <input type="text" class="form-control" v-model="conf_value_key">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否启用</label>
+                    <div>
+                        <select class="form-control" v-model="conf_value_status">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">注释</label>
+                    <div>
+                        <input type="text" class="form-control" v-model="conf_value_des">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" v-on:click="sava_modify">保存修改</button>
+            </div>
+        </div>
+    </div>
+</div>

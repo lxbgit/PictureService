@@ -1,0 +1,25 @@
+<div><h4 style="text-align:center;padding-top:10px;">服务器状态</h4></div>
+<div>
+    <table class="table table-responsive" style="margin-top:10px;">
+        <thead>
+            <tr class="active">
+                <td style="text-align:center;">类型</td>
+                <td style="text-align:center;">数据版本</td>
+                <td style="text-align:center;">数据sign</td>
+                <td style="text-align:center;">最后检查时间</td>
+                <td style="text-align:center;">URL</td>
+                <td style="text-align:center;">软件版本</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="node in data.data">
+                <td style="text-align:center;">{{node.type}}</td>
+                <td style="text-align:center;">{{node.data_version.version}}</td>
+                <td style="text-align:center;">{{node.data_version.sign}}</td>
+                <td style="text-align:center;">{{{node.last_check_utc | datetime}}}</td>
+                <td style="text-align:center;">{{node.node_url}}</td>
+                <td style="text-align:center;">{{node.app_version}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

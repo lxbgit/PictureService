@@ -1,0 +1,24 @@
+<span class="ifcond">
+    (
+    <span v-if="is_leaf_cond">
+        <span v-for="item in fr">
+            <span v-if="item.Symbol">
+                <span v-if="show_name == 1">
+                    {{symbol_titles[item.Symbol]}}
+                </span>
+                <span v-if="show_name == 0">
+                    {{item.Symbol}}
+                </span>
+            </span>
+            <span v-if="item.operator">{{item.operator}}</span>
+            <span v-if="item.value">{{item.value}}</span>
+        </span>
+    </span>
+    <span v-else>
+        <span v-for="item in fr">
+            <span v-if="item.operator">{{item.operator}}</span>
+            <ifcond :model="item" v-else></ifcond>
+        </span>
+    </span>
+    )
+</span>
